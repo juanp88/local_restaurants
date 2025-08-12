@@ -1,0 +1,157 @@
+{
+    "@@locale": "en",
+    "appTitle": "Local Restaurants",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "welcomeBack": "Welcome Back",
+    "@welcomeBack": {
+        "description": "Welcome message on login screen"
+    },
+    "signInToContinue": "Sign in to discover amazing restaurants",
+    "@signInToContinue": {
+        "description": "Subtitle on login screen"
+    },
+    "username": "Username",
+    "@username": {
+        "description": "Username field label"
+    },
+    "enterUsername": "Enter your username",
+    "@enterUsername": {
+        "description": "Username field hint"
+    },
+    "password": "Password",
+    "@password": {
+        "description": "Password field label"
+    },
+    "enterPassword": "Enter your password",
+    "@enterPassword": {
+        "description": "Password field hint"
+    },
+    "forgotPassword": "Forgot password?",
+    "@forgotPassword": {
+        "description": "Forgot password link"
+    },
+    "signIn": "Sign In",
+    "@signIn": {
+        "description": "Sign in button text"
+    },
+    "dontHaveAccount": "Don't have an account?",
+    "@dontHaveAccount": {
+        "description": "Text before sign up link"
+    },
+    "signUp": "Sign up",
+    "@signUp": {
+        "description": "Sign up link text"
+    },
+    "createAccount": "Create Account",
+    "@createAccount": {
+        "description": "Create account title"
+    },
+    "joinUsToDiscover": "Join us to discover amazing restaurants",
+    "@joinUsToDiscover": {
+        "description": "Subtitle on register screen"
+    },
+    "chooseUsername": "Choose a username",
+    "@chooseUsername": {
+        "description": "Username field hint on register"
+    },
+    "createStrongPassword": "Create a strong password",
+    "@createStrongPassword": {
+        "description": "Password field hint on register"
+    },
+    "alreadyHaveAccount": "Already have an account?",
+    "@alreadyHaveAccount": {
+        "description": "Text before sign in link"
+    },
+    "discoverRestaurants": "Discover Restaurants",
+    "@discoverRestaurants": {
+        "description": "Main title on search page"
+    },
+    "findAmazingRestaurants": "Find amazing restaurants around the world by exploring different countries",
+    "@findAmazingRestaurants": {
+        "description": "Subtitle on search page"
+    },
+    "searchCountries": "Search countries...",
+    "@searchCountries": {
+        "description": "Search bar placeholder"
+    },
+    "signOut": "Sign Out",
+    "@signOut": {
+        "description": "Sign out button text"
+    },
+    "areYouSureSignOut": "Are you sure you want to sign out?",
+    "@areYouSureSignOut": {
+        "description": "Sign out confirmation message"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "noCountriesFound": "No countries found",
+    "@noCountriesFound": {
+        "description": "Empty state title"
+    },
+    "tryAdjustingSearch": "Try adjusting your search terms\nor check your spelling",
+    "@tryAdjustingSearch": {
+        "description": "Empty state subtitle"
+    },
+    "clearSearch": "Clear Search",
+    "@clearSearch": {
+        "description": "Clear search button text"
+    },
+    "selected": "Selected: {country}",
+    "@selected": {
+        "description": "Selected country message",
+        "placeholders": {
+            "country": {
+                "type": "String",
+                "example": "Spain"
+            }
+        }
+    },
+    "clearSearchTooltip": "Clear search",
+    "@clearSearchTooltip": {
+        "description": "Clear search button tooltip"
+    },
+    "loginError": "Login Error",
+    "@loginError": {
+        "description": "Login error dialog title"
+    },
+    "registrationError": "Registration Error",
+    "@registrationError": {
+        "description": "Registration error dialog title"
+    },
+    "ok": "OK",
+    "@ok": {
+        "description": "OK button text"
+    },
+    "pleaseEnterUsername": "Please enter your username",
+    "@pleaseEnterUsername": {
+        "description": "Username validation message"
+    },
+    "pleaseEnterPassword": "Please enter your password",
+    "@pleaseEnterPassword": {
+        "description": "Password validation message"
+    },
+    "usernameMinLength": "Username must be at least 3 characters",
+    "@usernameMinLength": {
+        "description": "Username minimum length validation"
+    },
+    "passwordMinLength": "Password must be at least 6 characters",
+    "@passwordMinLength": {
+        "description": "Password minimum length validation"
+    },
+    "accountCreatedSuccessfully": "Account created successfully!",
+    "@accountCreatedSuccessfully": {
+        "description": "Success message after registration"
+    },
+    "registrationFailed": "Registration failed. Please try again.",
+    "@registrationFailed": {
+        "description": "Registration failure message"
+    },
+    "or": "or",
+    "@or": {
+        "description": "Divider text between sections"
+    }
+}

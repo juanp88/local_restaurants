@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 
 class CountryTile extends StatefulWidget {
   final String name;
@@ -68,12 +69,13 @@ class _CountryTileState extends State<CountryTile>
   }
 
   void _onTap() {
+    final l10n = AppLocalizations.of(context)!;
     // Handle country selection with haptic feedback
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Row(
           children: [
-            Icon(
+            const Icon(
               Icons.location_on,
               color: Colors.white,
               size: 20,
@@ -81,7 +83,7 @@ class _CountryTileState extends State<CountryTile>
             const SizedBox(width: 12),
             Expanded(
               child: Text(
-                'Selected: ${widget.name}',
+                l10n.selected(widget.name),
                 style: const TextStyle(
                   fontWeight: FontWeight.w500,
                 ),

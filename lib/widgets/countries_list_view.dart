@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:local_restaurants/view_model/search_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:animate_do/animate_do.dart';
+import '../l10n/app_localizations.dart';
 
 import '../models/country.dart';
 import 'country_tile.dart';
@@ -72,6 +73,7 @@ class CountriesListView extends StatelessWidget {
 
   Widget _buildEmptyState(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return FadeIn(
       duration: const Duration(milliseconds: 200),
@@ -104,7 +106,7 @@ class CountriesListView extends StatelessWidget {
             FadeInUp(
               delay: const Duration(milliseconds: 50),
               child: Text(
-                'No countries found',
+                l10n.noCountriesFound,
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: theme.colorScheme.onSurface,
@@ -115,7 +117,7 @@ class CountriesListView extends StatelessWidget {
             FadeInUp(
               delay: const Duration(milliseconds: 100),
               child: Text(
-                'Try adjusting your search terms\nor check your spelling',
+                l10n.tryAdjustingSearch,
                 style: theme.textTheme.bodyLarge?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
                 ),
@@ -130,7 +132,7 @@ class CountriesListView extends StatelessWidget {
                   Provider.of<SearchViewModel>(context, listen: false)
                       .setFilteredCountry('');
                 },
-                child: const Text('Clear Search'),
+                child: Text(l10n.clearSearch),
               ),
             ),
           ],

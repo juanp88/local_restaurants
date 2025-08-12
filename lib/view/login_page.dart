@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:local_restaurants/utils/authenticated.dart';
 import 'package:local_restaurants/view/search_pages.dart';
+import '../l10n/app_localizations.dart';
 import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -94,12 +95,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Login Error'),
+        title: Text(AppLocalizations.of(context)!.loginError),
         content: Text(message),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+            child: Text(AppLocalizations.of(context)!.ok),
           ),
         ],
       ),
@@ -109,6 +110,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       body: Container(
@@ -194,8 +196,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                         child: TextFormField(
                           controller: _userController,
                           decoration: InputDecoration(
-                            labelText: 'Username',
-                            hintText: 'Enter your username',
+                            labelText: l10n.username,
+                            hintText: l10n.enterUsername,
                             prefixIcon: Icon(
                               Icons.person_outline,
                               color: theme.colorScheme.primary,
@@ -203,7 +205,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           ),
                           validator: (value) {
                             if (value == null || value.trim().isEmpty) {
-                              return 'Please enter your username';
+                              return l10n.pleaseEnterUsername;
                             }
                             return null;
                           },
@@ -220,8 +222,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           controller: _passwordController,
                           obscureText: _obscurePassword,
                           decoration: InputDecoration(
-                            labelText: 'Password',
-                            hintText: 'Enter your password',
+                            labelText: l10n.password,
+                            hintText: l10n.enterPassword,
                             prefixIcon: Icon(
                               Icons.lock_outline,
                               color: theme.colorScheme.primary,
@@ -241,7 +243,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           ),
                           validator: (value) {
                             if (value == null || value.trim().isEmpty) {
-                              return 'Please enter your password';
+                              return l10n.pleaseEnterPassword;
                             }
                             return null;
                           },
@@ -294,7 +296,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                     ),
                                   )
                                 : Text(
-                                    'Sign In',
+                                    l10n.signIn,
                                     style:
                                         theme.textTheme.titleMedium?.copyWith(
                                       color: Colors.white,
@@ -313,7 +315,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: Text(
-                              'or',
+                              l10n.or,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 color: theme.colorScheme.onSurfaceVariant,
                               ),
@@ -329,7 +331,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Don't have an account?",
+                            l10n.dontHaveAccount,
                             style: theme.textTheme.bodyMedium,
                           ),
                           TextButton(
@@ -337,7 +339,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                               // TODO: Navigate to register page
                             },
                             child: Text(
-                              'Sign up',
+                              l10n.signUp,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 color: theme.colorScheme.primary,
                                 fontWeight: FontWeight.bold,

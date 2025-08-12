@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:local_restaurants/view_model/search_view_model.dart';
 import 'package:provider/provider.dart';
+import '../l10n/app_localizations.dart';
 
 class CustomSearchBar extends StatefulWidget {
   const CustomSearchBar({super.key});
@@ -72,6 +73,7 @@ class _CustomSearchBarState extends State<CustomSearchBar>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return AnimatedBuilder(
       animation: _scaleAnimation,
@@ -102,7 +104,7 @@ class _CustomSearchBarState extends State<CustomSearchBar>
               controller: _searchController,
               focusNode: _focusNode,
               decoration: InputDecoration(
-                hintText: 'Search countries...',
+                hintText: l10n.searchCountries,
                 hintStyle: TextStyle(
                   color: Colors.grey.shade500,
                   fontSize: 16,
@@ -127,7 +129,7 @@ class _CustomSearchBarState extends State<CustomSearchBar>
                             color: Colors.grey.shade400,
                           ),
                           onPressed: _clearSearch,
-                          tooltip: 'Clear search',
+                          tooltip: l10n.clearSearchTooltip,
                         ),
                       )
                     : null,

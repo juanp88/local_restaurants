@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:local_restaurants/view/login_page.dart';
 import 'package:provider/provider.dart';
+import '../l10n/app_localizations.dart';
 
 import '../view_model/search_view_model.dart';
 import '../widgets/countries_list_view.dart';
 import '../widgets/custom_search_bar.dart';
+import '../widgets/language_selector.dart';
+import '../providers/locale_provider.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -25,6 +28,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       body: Container(
@@ -79,7 +83,7 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         const SizedBox(width: 12),
                         Text(
-                          'Local Restaurants',
+                          l10n.appTitle,
                           style: theme.textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                             color: theme.colorScheme.onSurface,
@@ -89,6 +93,16 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                   ),
                   actions: [
+                    Consumer<LocaleProvider>(
+                      builder: (context, localeProvider, child) {
+                        return LanguageSelector(
+                          currentLocale: localeProvider.locale,
+                          onLocaleChanged: (locale) {
+                            localeProvider.setLocale(locale);
+                          },
+                        );
+                      },
+                    ),
                     Container(
                       margin: const EdgeInsets.only(right: 16),
                       decoration: BoxDecoration(
@@ -104,7 +118,7 @@ class _SearchPageState extends State<SearchPage> {
                         onPressed: () {
                           _showLogoutDialog(context);
                         },
-                        tooltip: 'Sign out',
+                        tooltip: l10n.signOut,
                       ),
                     ),
                   ],
@@ -118,7 +132,7 @@ class _SearchPageState extends State<SearchPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Discover Restaurants',
+                          l10n.discoverRestaurants,
                           style: theme.textTheme.displaySmall?.copyWith(
                             fontWeight: FontWeight.bold,
                             color: theme.colorScheme.onSurface,
@@ -126,7 +140,7 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'Find amazing restaurants around the world by exploring different countries',
+                          l10n.findAmazingRestaurants,
                           style: theme.textTheme.bodyLarge?.copyWith(
                             color: theme.colorScheme.onSurfaceVariant,
                             height: 1.5,
@@ -155,18 +169,19 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void _showLogoutDialog(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Sign Out'),
-        content: const Text('Are you sure you want to sign out?'),
+        title: Text(l10n.signOut),
+        content: Text(l10n.areYouSureSignOut),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () {
@@ -176,7 +191,7 @@ class _SearchPageState extends State<SearchPage> {
                 MaterialPageRoute(builder: (context) => const LoginPage()),
               );
             },
-            child: const Text('Sign Out'),
+            child: Text(l10n.signOut),
           ),
         ],
       ),
