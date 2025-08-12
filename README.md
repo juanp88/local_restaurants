@@ -4,9 +4,9 @@ A modern, feature-rich Flutter application for discovering restaurants around th
 
 This is just demo app, for learning and testing purposes not meant to be a production ready one. 
 
-<img width="640" height="840" alt="Image" src="https://github.com/user-attachments/assets/3efb43c7-3cfa-4bee-8ffb-0024bf1d78d2" />
+<img width="480" height="640" alt="Image" src="https://github.com/user-attachments/assets/3efb43c7-3cfa-4bee-8ffb-0024bf1d78d2" />
 
-<img width="640" height="840" alt="Image" src="https://github.com/user-attachments/assets/05e520f2-277f-42e8-b76c-e63e1d9b8be4" />
+<img width="480" height="640" alt="Image" src="https://github.com/user-attachments/assets/05e520f2-277f-42e8-b76c-e63e1d9b8be4" />
 
 ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
