@@ -18,23 +18,49 @@ class CountriesListView extends StatelessWidget {
               searchProvider.filteredCountry.toString().toLowerCase()))
           .toList();
     }
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ListView.separated(
-        itemCount: countriesList.length,
-        itemBuilder: ((context, index) {
-          Country country = countriesList[index];
-          // implementar country tile
-          return CountryTile(
-              name: country.name.toString(),
-              capital: country.capital.toString());
-        }),
-        separatorBuilder: (context, index) {
-          return SizedBox(
-            height: 10,
-          );
-        },
-      ),
+
+    if (countriesList.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.search_off_outlined,
+              size: 64,
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'No countries found',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Try a different search term',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return ListView.separated(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      itemCount: countriesList.length,
+      separatorBuilder: (context, index) => const SizedBox(height: 12),
+      itemBuilder: (context, index) {
+        final country = countriesList[index];
+        return Semantics(
+          button: true,
+          label: '${country.name}, capital: ${country.capital}',
+          child: CountryTile(
+            name: country.name.toString(),
+            capital: country.capital.toString(),
+          ),
+        );
+      },
     );
   }
 }

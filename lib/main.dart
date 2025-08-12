@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local_restaurants/config/app_theme.dart';
 import 'package:local_restaurants/view/login_page.dart';
 import 'package:local_restaurants/view_model/register_page_view_model.dart';
 import 'package:local_restaurants/view_model/search_view_model.dart';
@@ -15,20 +16,19 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => RegisterPageViewModel()),
-        ChangeNotifierProvider(create: (context) => SearchViewModel()),
+        ChangeNotifierProvider(create: (_) => RegisterPageViewModel()),
+        ChangeNotifierProvider(create: (_) => SearchViewModel()),
       ],
       child: MaterialApp(
+        title: 'Local Restaurants',
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.system,
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
         home: LoginPage(),
       ),
     );

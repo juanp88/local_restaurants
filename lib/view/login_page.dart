@@ -2,156 +2,254 @@ import 'package:flutter/material.dart';
 import 'package:local_restaurants/utils/authenticated.dart';
 import 'package:local_restaurants/view/register_page.dart';
 import 'package:local_restaurants/view/search_pages.dart';
-import '../widgets/custom_text_field.dart';
-import '../widgets/login_form.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController userController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController _userController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false;
+  bool _obscurePassword = true;
+
+  @override
+  void dispose() {
+    _userController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _handleLogin() async {
+    if (_formKey.currentState!.validate()) {
+      setState(() => _isLoading = true);
+
+      try {
+        final response = Authenticate().validateLogin(
+          _userController.text.trim(),
+          _passwordController.text.trim(),
+        );
+
+        if (response == 'Acceso conecedido') {
+          if (!mounted) return;
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => SearchPage()),
+          );
+        } else {
+          if (!mounted) return;
+          _showErrorDialog(response);
+        }
+      } finally {
+        if (mounted) setState(() => _isLoading = false);
+      }
+    }
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Login Error'),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    String _user = '';
-    String _password = '';
+    final theme = Theme.of(context);
 
     return Scaffold(
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: const Text(
-                  "LOGIN",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF2661FA),
-                      fontSize: 36),
-                  textAlign: TextAlign.left,
+        body: Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            theme.colorScheme.surface.withOpacity(0.1),
+            theme.colorScheme.surface.withOpacity(0.3),
+          ],
+        ),
+      ),
+      child: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 80),
+                Text(
+                  'Welcome Back',
+                  style: theme.textTheme.displaySmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.primary,
+                  ),
                 ),
-              ),
-              SizedBox(height: size.height * 0.03),
-              Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.symmetric(horizontal: 40),
-                  child: MyTextFormField(
-                    controller: userController,
-                    isPassword: false,
-                    hintText: 'User',
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return 'Debe ingresar el usuario';
-                      }
-                      return null;
-                    },
-                    onSaved: (String? value) {
-                      _user = value!;
-                    },
-                  )),
-              SizedBox(height: size.height * 0.03),
-              Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.symmetric(horizontal: 40),
-                  child: MyTextFormField(
-                    controller: passwordController,
-                    isPassword: true,
-                    hintText: 'Password',
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return 'Debe ingresar el password';
-                      }
-                      return null;
-                    },
-                    onSaved: (String? value) {
-                      _password = value!;
-                    },
-                  )),
-              Container(
-                alignment: Alignment.centerRight,
-                margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-                child: const Text(
-                  "Forgot your password?",
-                  style: TextStyle(fontSize: 12, color: Color(0XFF2661FA)),
+                const SizedBox(height: 12),
+                Text(
+                  'Sign in to continue',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
                 ),
-              ),
+                const SizedBox(height: 60),
 
-              //botón login
-              Container(
-                alignment: Alignment.centerRight,
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      var response =
-                          Authenticate().validateLogin(_user, _password);
-                      if (response == 'Acceso conecedido') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SearchPage()));
-                        passwordController.clear();
-                        userController.clear();
-                      } else if (response == 'No hay datos disponibles') {
-                        showDialog(
-                          context: context,
-                          builder: (_) => AlertDialog(
-                            content: Text(response),
-                          ),
-                        );
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (_) => AlertDialog(
-                            content: Text(response),
-                          ),
-                        );
-                      }
-                    }
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 50.0,
-                    width: size.width * 0.5,
-                    padding: const EdgeInsets.all(0),
-                    child: const Text(
-                      "LOGIN",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                // Username Field
+                TextFormField(
+                  controller: _userController,
+                  decoration: InputDecoration(
+                    labelText: 'Username',
+                    hintText: 'Enter your username',
+                    prefixIcon: Icon(Icons.person_outline,
+                        color: theme.colorScheme.primary),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
                     ),
+                    filled: true,
+                    fillColor:
+                        theme.colorScheme.surfaceVariant.withOpacity(0.3),
                   ),
-                ),
-              ),
-              Container(
-                alignment: Alignment.centerRight,
-                margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-                child: GestureDetector(
-                  onTap: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => (RegisterPage())))
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Please enter your username';
+                    }
+                    return null;
                   },
-                  child: const Text(
-                    "Don't Have an Account? Sign up",
-                    style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF2661FA)),
+                  textInputAction: TextInputAction.next,
+                  autofillHints: const [AutofillHints.username],
+                ),
+                const SizedBox(height: 16),
+
+                // Password Field
+                TextFormField(
+                  controller: _passwordController,
+                  obscureText: _obscurePassword,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    hintText: 'Enter your password',
+                    prefixIcon: Icon(Icons.lock_outline,
+                        color: theme.colorScheme.primary),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                        color: theme.colorScheme.primary,
+                      ),
+                      onPressed: () {
+                        setState(() => _obscurePassword = !_obscurePassword);
+                      },
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor:
+                        theme.colorScheme.surfaceVariant.withOpacity(0.3),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Please enter your password';
+                    }
+                    return null;
+                  },
+                  textInputAction: TextInputAction.done,
+                  autofillHints: const [AutofillHints.password],
+                  onFieldSubmitted: (_) => _handleLogin(),
+                ),
+                const SizedBox(height: 8),
+
+                // Forgot Password
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text('Forgot password?'),
                   ),
                 ),
-              )
-            ],
+                const SizedBox(height: 24),
+
+                // Login Button
+                SizedBox(
+                  width: double.infinity,
+                  height: 56,
+                  child: ElevatedButton(
+                    onPressed: _isLoading ? null : _handleLogin,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.colorScheme.primary,
+                      foregroundColor: theme.colorScheme.onPrimary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      elevation: 5,
+                    ),
+                    child: _isLoading
+                        ? SizedBox(
+                            width: 24,
+                            height: 24,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: theme.colorScheme.onPrimary,
+                            ),
+                          )
+                        : Text(
+                            'Sign In',
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              color: theme.colorScheme.onPrimary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                  ),
+                ),
+                const SizedBox(height: 32),
+
+                // Sign Up Link
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an account?",
+                      style: theme.textTheme.bodyMedium,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RegisterPage(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Sign up',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    );
+    ));
   }
 }
