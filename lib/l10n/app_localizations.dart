@@ -319,6 +319,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'or'**
   String get or;
+
+  /// Title for restaurants page
+  ///
+  /// In en, this message translates to:
+  /// **'Restaurants in {city}'**
+  String restaurantsIn(String city);
+
+  /// Error message when restaurants fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading restaurants'**
+  String get errorLoadingRestaurants;
+
+  /// Error message subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your connection and try again'**
+  String get checkConnectionAndTryAgain;
+
+  /// Try again button text
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get tryAgain;
+
+  /// Empty state message for restaurants
+  ///
+  /// In en, this message translates to:
+  /// **'No restaurants found'**
+  String get noRestaurantsFound;
+
+  /// Empty state subtitle for restaurants
+  ///
+  /// In en, this message translates to:
+  /// **'Try a different city or check back later'**
+  String get tryDifferentCityOrCheckLater;
+
+  /// Fallback restaurant name
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown Restaurant'**
+  String get unknownRestaurant;
+
+  /// Address label
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// Phone label
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
+  /// Opening hours label
+  ///
+  /// In en, this message translates to:
+  /// **'Opening Hours'**
+  String get openingHours;
+
+  /// Status label
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// Open status
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get open;
+
+  /// Closed status
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get closed;
+
+  /// Call button text
+  ///
+  /// In en, this message translates to:
+  /// **'Call'**
+  String get call;
+
+  /// Directions button text
+  ///
+  /// In en, this message translates to:
+  /// **'Directions'**
+  String get directions;
+
+  /// Coming soon message for call feature
+  ///
+  /// In en, this message translates to:
+  /// **'Call feature coming soon!'**
+  String get callFeatureComingSoon;
+
+  /// Coming soon message for directions feature
+  ///
+  /// In en, this message translates to:
+  /// **'Directions feature coming soon!'**
+  String get directionsFeatureComingSoon;
 }
 
 class _AppLocalizationsDelegate

@@ -122,4 +122,59 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get or => 'or';
+
+  @override
+  String restaurantsIn(String city) {
+    return 'Restaurants in $city';
+  }
+
+  @override
+  String get errorLoadingRestaurants => 'Error loading restaurants';
+
+  @override
+  String get checkConnectionAndTryAgain =>
+      'Please check your connection and try again';
+
+  @override
+  String get tryAgain => 'Try Again';
+
+  @override
+  String get noRestaurantsFound => 'No restaurants found';
+
+  @override
+  String get tryDifferentCityOrCheckLater =>
+      'Try a different city or check back later';
+
+  @override
+  String get unknownRestaurant => 'Unknown Restaurant';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get openingHours => 'Opening Hours';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get open => 'Open';
+
+  @override
+  String get closed => 'Closed';
+
+  @override
+  String get call => 'Call';
+
+  @override
+  String get directions => 'Directions';
+
+  @override
+  String get callFeatureComingSoon => 'Call feature coming soon!';
+
+  @override
+  String get directionsFeatureComingSoon => 'Directions feature coming soon!';
 }

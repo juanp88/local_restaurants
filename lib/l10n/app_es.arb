@@ -36,5 +36,22 @@
   "passwordMinLength": "La contraseña debe tener al menos 6 caracteres",
   "accountCreatedSuccessfully": "¡Cuenta creada exitosamente!",
   "registrationFailed": "El registro falló. Por favor intenta de nuevo.",
-  "or": "o"
+  "or": "o",
+  "restaurantsIn": "Restaurantes en {city}",
+  "errorLoadingRestaurants": "Error al cargar restaurantes",
+  "checkConnectionAndTryAgain": "Por favor verifica tu conexión e intenta de nuevo",
+  "tryAgain": "Intentar de Nuevo",
+  "noRestaurantsFound": "No se encontraron restaurantes",
+  "tryDifferentCityOrCheckLater": "Intenta con una ciudad diferente o vuelve más tarde",
+  "unknownRestaurant": "Restaurante Desconocido",
+  "address": "Dirección",
+  "phone": "Teléfono",
+  "openingHours": "Horarios de Atención",
+  "status": "Estado",
+  "open": "Abierto",
+  "closed": "Cerrado",
+  "call": "Llamar",
+  "directions": "Direcciones",
+  "callFeatureComingSoon": "¡Función de llamada próximamente!",
+  "directionsFeatureComingSoon": "¡Función de direcciones próximamente!"
 }

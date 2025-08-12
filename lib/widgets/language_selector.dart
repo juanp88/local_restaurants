@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../l10n/app_localizations.dart';
 
 class LanguageSelector extends StatelessWidget {
   final Locale currentLocale;

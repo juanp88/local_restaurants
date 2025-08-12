@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../l10n/app_localizations.dart';
+import '../view/restaurants_page.dart';
 
 class CountryTile extends StatefulWidget {
   final String name;
@@ -69,34 +69,14 @@ class _CountryTileState extends State<CountryTile>
   }
 
   void _onTap() {
-    final l10n = AppLocalizations.of(context)!;
-    // Handle country selection with haptic feedback
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Row(
-          children: [
-            const Icon(
-              Icons.location_on,
-              color: Colors.white,
-              size: 20,
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                l10n.selected(widget.name),
-                style: const TextStyle(
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ],
+    // Navigate to restaurants page for the selected city
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => RestaurantsPage(
+          cityName: widget.capital,
+          countryName: widget.name,
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        margin: const EdgeInsets.all(16),
       ),
     );
   }

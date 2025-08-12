@@ -153,5 +153,79 @@
     "or": "or",
     "@or": {
         "description": "Divider text between sections"
+    },
+    "restaurantsIn": "Restaurants in {city}",
+    "@restaurantsIn": {
+        "description": "Title for restaurants page",
+        "placeholders": {
+            "city": {
+                "type": "String",
+                "example": "Paris"
+            }
+        }
+    },
+    "errorLoadingRestaurants": "Error loading restaurants",
+    "@errorLoadingRestaurants": {
+        "description": "Error message when restaurants fail to load"
+    },
+    "checkConnectionAndTryAgain": "Please check your connection and try again",
+    "@checkConnectionAndTryAgain": {
+        "description": "Error message subtitle"
+    },
+    "tryAgain": "Try Again",
+    "@tryAgain": {
+        "description": "Try again button text"
+    },
+    "noRestaurantsFound": "No restaurants found",
+    "@noRestaurantsFound": {
+        "description": "Empty state message for restaurants"
+    },
+    "tryDifferentCityOrCheckLater": "Try a different city or check back later",
+    "@tryDifferentCityOrCheckLater": {
+        "description": "Empty state subtitle for restaurants"
+    },
+    "unknownRestaurant": "Unknown Restaurant",
+    "@unknownRestaurant": {
+        "description": "Fallback restaurant name"
+    },
+    "address": "Address",
+    "@address": {
+        "description": "Address label"
+    },
+    "phone": "Phone",
+    "@phone": {
+        "description": "Phone label"
+    },
+    "openingHours": "Opening Hours",
+    "@openingHours": {
+        "description": "Opening hours label"
+    },
+    "status": "Status",
+    "@status": {
+        "description": "Status label"
+    },
+    "open": "Open",
+    "@open": {
+        "description": "Open status"
+    },
+    "closed": "Closed",
+    "@closed": {
+        "description": "Closed status"
+    },
+    "call": "Call",
+    "@call": {
+        "description": "Call button text"
+    },
+    "directions": "Directions",
+    "@directions": {
+        "description": "Directions button text"
+    },
+    "callFeatureComingSoon": "Call feature coming soon!",
+    "@callFeatureComingSoon": {
+        "description": "Coming soon message for call feature"
+    },
+    "directionsFeatureComingSoon": "Directions feature coming soon!",
+    "@directionsFeatureComingSoon": {
+        "description": "Coming soon message for directions feature"
     }
 }
