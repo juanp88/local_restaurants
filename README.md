@@ -2,6 +2,8 @@
 
 A modern, feature-rich Flutter application for discovering restaurants around the world. Explore cuisines from different countries with a beautiful, intuitive interface that supports multiple languages.
 
+This is just demo app, for learning and testing purposes not meant to be a production ready one. 
+
 ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 ![Material Design](https://img.shields.io/badge/Material%20Design-757575?style=for-the-badge&logo=material-design&logoColor=white)
@@ -251,48 +253,3 @@ flutter build appbundle --release
 ```bash
 flutter build ios --release
 ```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### **Development Guidelines**
-- Follow Flutter/Dart style guidelines
-- Write meaningful commit messages
-- Add tests for new features
-- Update documentation as needed
-- Ensure internationalization for new strings
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Flutter Team** - For the amazing framework
-- **Material Design** - For the beautiful design system
-- **Unsplash** - For high-quality restaurant images
-- **OpenStreetMap** - For geographical data
-- **Community Contributors** - For inspiration and feedback
-
-## 📞 Support
-
-If you have any questions or need help with the project:
-
-- 📧 Email: your.email@example.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/local_restaurants/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/local_restaurants/discussions)
-
----
-
-<div align="center">
-
-**Made with ❤️ using Flutter**
-
-[⭐ Star this repo](https://github.com/yourusername/local_restaurants) • [🐛 Report Bug](https://github.com/yourusername/local_restaurants/issues) • [✨ Request Feature](https://github.com/yourusername/local_restaurants/issues)
-
-</div>
